@@ -1,0 +1,38 @@
+{
+  "name": "myapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "SET \"NODE_ENV=test\" && mocha test/bookTest.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "express-handlebars": "^6.0.6",
+    "fs": "^0.0.1-security",
+    "hbs": "^4.2.0",
+    "jsonfile": "^6.1.0",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "nodemon": "^2.0.20",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "request": "^2.88.2"
+  },
+  "nodemonConfig": {
+    "ext": "js, pug, json, css"
+  },
+  "devDependencies": {
+    "chai": "^4.3.7",
+    "expect": "^29.3.1",
+    "mocha": "^10.1.0",
+    "nock": "^13.2.9",
+    "supertest": "^6.3.1"
+  }
+}
