@@ -1,0 +1,28 @@
+{
+  "users": [
+    {
+      "id": 0,
+      "username": "kek",
+      "password": "$2b$10$PRPNt0QYv6UibCDvA7UWFO2sRwQnFvxVDSnZPdcxtBPWbdSBx/ViO"
+    },
+    {
+      "id": 1,
+      "username": "dima",
+      "password": "$2b$10$vFKamMFrTlUgJjdLhME1MeheQk2LDVFSGkFmfMpE6H3gD37jqu4xO"
+    },
+    {
+      "id": 2,
+      "username": "12345678902141f5 1345tr rsfdbas dsF A EAS",
+      "password": "$2b$10$TU5H3QUNuy3yKGYqYmocaec8qVB51Qu2hHatbkVgDSv1AFCspmucS"
+    },
+    {
+      "id": 3,
+      "username": "MaksPunch",
+      "password": "$2b$10$HqLMOAFEfw8MHGSlyNg.uuM.URGNDI0HV9xE1aNBhjcZl0qCQTrdq"
+    }
+  ],
+  "roles": [
+    "user",
+    "admin"
+  ]
+}

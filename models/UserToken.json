@@ -1,0 +1,11 @@
+{
+  "userToken": [
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE2NzE4MjA0OTIsImV4cCI6MTY3NDQxMjQ5Mn0.aqNGPATx20klltlsumnjRQuCKpnwUBTuAq597TqbCSI"
+    },
+    {
+      "userId": 3,
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywiaWF0IjoxNjcxODIwNzQ4LCJleHAiOjE2NzQ0MTI3NDh9.5BW8AWPROHoU2ZtY1QGffpZuHbigEcnpItOmoznkwC4"
+    }
+  ]
+}

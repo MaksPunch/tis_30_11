@@ -7,6 +7,10 @@ const jsonfile = require('jsonfile')
 const path = './test/data.json'
 const file = jsonfile.readFileSync(path)
 
+const auth = require('./routes/auth');
+
+app.use('/api', auth);
+
 const findBookById = (id) => {
     const books = file.books
     const bookFound = books.filter((book) => {
