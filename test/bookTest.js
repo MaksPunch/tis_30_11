@@ -101,7 +101,7 @@ describe('POST Auth', () => {
     }),
     it('should create a new user', (done) => {
         let user = {
-            username: "aaa",
+            username: "aaaa",
             password: "123456"
         }
         request(app)
@@ -127,6 +127,23 @@ describe('POST Auth', () => {
             .expect(400)
             .expect((res) => {
                 expect(res.body.message).toStrictEqual("User with given username already exist")
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    })
+    it('should login successfully', (done) => {
+        let user = {
+            username: "dima",
+            password: "123456"
+        }
+        request(app)
+            .post('/api/login')
+            .send(user)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.message).toStrictEqual("Logged in sucessfully")
             })
             .end((err, res) => {
                 if (err) return done(err)
