@@ -43,3 +43,37 @@ describe('POST /book', () => {
             })
     })
 })
+
+describe('PUT /book/:id', () => {
+    it('should update a book', (done) => {
+        let book = {
+            id: 1,
+            "name": "Под шепчущей дверью",
+            "author": "Ти Джей Клун",
+            "realese": "2022",
+            "owner": [
+                {
+                    "id": 69,
+                    "name": "Дмитрий Фролов",
+                    "datein": "22.12.2022",
+                    "dateout": "23.12.2022"
+                }
+            ],
+            "search_tags": [
+                "Фентези",
+                "Ужасы"
+            ] 
+        }
+        request(app)
+            .put('/api/book/1')
+            .send(book)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.book).toStrictEqual(book)
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    })
+})

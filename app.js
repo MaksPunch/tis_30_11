@@ -72,10 +72,10 @@ app.put('/api/book/:id', (req, res) => {
     const book = {
 		id: id,
 		name: req.body.name || req.body.name,
-        author: req.body.author || req.body.author,
-        realese: req.body.realese || req.body.realese,
-        owner: req.body.owner || req.body.owner,
-        search_tags: req.body.search_tags || req.body.search_tags
+    author: req.body.author || req.body.author,
+    realese: req.body.realese || req.body.realese,
+    owner: req.body.owner || req.body.owner,
+    search_tags: req.body.search_tags || req.body.search_tags
 	}
     jsonfile.readFile(path, (err, obj) => {
         if (err) throw err;
