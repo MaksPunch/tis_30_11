@@ -19,6 +19,41 @@
       "id": 3,
       "username": "MaksPunch",
       "password": "$2b$10$HqLMOAFEfw8MHGSlyNg.uuM.URGNDI0HV9xE1aNBhjcZl0qCQTrdq"
+    },
+    {
+      "id": 4,
+      "username": "dima1",
+      "password": "$2b$10$IDxOed85vAcus.F8NWUe3.z7Nzj.sF9pjgTl6sYckUkiEzogrfsZG"
+    },
+    {
+      "id": 5,
+      "username": "dima213",
+      "password": "$2b$10$LrvlNShyBQn64Ta4WKfM..yKEaOIDmdWP5fNkCz/YhFUpmuMOz6Fe"
+    },
+    {
+      "id": 6,
+      "username": "dima231213",
+      "password": "$2b$10$1ilzh3kvXpKyclP1IW7p0.0PNIL1iqdmt4jsp0rkcXoMiGdwPW4ru"
+    },
+    {
+      "id": 7,
+      "username": "123",
+      "password": "$2b$10$4vzdiKTgFXTIsDjtXc4nNOdHmWsCw7NHHWDY34FTaeoE9OdyC.hRC"
+    },
+    {
+      "id": 8,
+      "username": "12312345",
+      "password": "$2b$10$1oSyNohyprOQqt2O4QGFwup4qUdDneiesMrtFj50jPyVceEqkZ/Gq"
+    },
+    {
+      "id": 9,
+      "username": "12312132345",
+      "password": "$2b$10$bv4Yoi3Kj1XCSzM/QQ8NW.k7G7QZYwhQ7LhuLVbzZjaamV0SPQL6G"
+    },
+    {
+      "id": 10,
+      "username": "aa",
+      "password": "$2b$10$qq4HZHmxGThm7BcZfXqGe.RPtwGDlS6f4uYqcp.tnTczBVbb6KvaC"
     }
   ],
   "roles": [

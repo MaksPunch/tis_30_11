@@ -13,7 +13,6 @@ const User = jf.readFileSync(file);
 // signup
 router.post("/signUp", async (req, res) => {
     try {
-        console.log(User)
         const user = await User.users.find(el => el.username == req.body.username);
         if (user)
             return res
@@ -33,7 +32,7 @@ router.post("/signUp", async (req, res) => {
 
         res
             .status(201)
-            .json({ error: false, message: "Account created sucessfully" });
+            .json({ error: false, message: "Account created sucessfully", user: newUser });
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: true, message: "Internal Server Error" });
@@ -65,6 +64,7 @@ router.post("/logIn", async (req, res) => {
             accessToken,
             refreshToken,
             message: "Logged in sucessfully",
+            userId: user.id 
         });
     } catch (err) {
         console.log(err);

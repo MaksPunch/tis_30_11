@@ -1,11 +1,11 @@
 const app = require('../app.js')
 const request = require('supertest')
 const expect = require('expect').default
-const jsonfile = require('jsonfile')
+const jf = require('jsonfile')
 const path = require('path')
 
 let filePath = path.join(__dirname+'/data.json')
-const file = jsonfile.readFileSync(filePath)
+const file = jf.readFileSync(filePath)
 
 describe('GET /book', function() {
     it('get', function(done) {
@@ -77,3 +77,61 @@ describe('PUT /book/:id', () => {
             })
     })
 })
+
+describe('POST Auth', () => {
+    it('should create valid refreshToken for logged user', (done) => {
+        let user = {
+            username: "dima",
+            password: "123456"
+        }
+        request(app)
+            .post('/api/login')
+            .send(user)
+            .expect(200)
+            .expect((res) => {
+                jf.readFile('./models/UserToken.json', (err, obj) => {
+                    if (err) throw err
+                    expect(res.body.refreshToken).toStrictEqual(obj.userToken.find(el => el.userId == res.body.userId).token)
+                })
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    }),
+    it('should create a new user', (done) => {
+        let user = {
+            username: "aaa",
+            password: "123456"
+        }
+        request(app)
+            .post('/api/signUp')
+            .send(user)
+            .expect(201)
+            .expect((res) => {
+                expect(res.body.message).toStrictEqual("Account created sucessfully")
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    }),
+    it('should return error if username already taken', (done) => {
+        let user = {
+            username: "dima",
+            password: "123456"
+        }
+        request(app)
+            .post('/api/signUp')
+            .send(user)
+            .expect(400)
+            .expect((res) => {
+                expect(res.body.message).toStrictEqual("User with given username already exist")
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    })
+})
+
