@@ -109,7 +109,7 @@ app.delete('/api/book/:id', (req, res) => {
     return res.status(200).json({
 	    success: "true",
 	    message: "book deleted successfully",
-        book: file.books[id]
+      book: file.books[id]
   	});
 })
 

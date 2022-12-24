@@ -101,7 +101,7 @@ describe('POST Auth', () => {
     }),
     it('should create a new user', (done) => {
         let user = {
-            username: "aaaa",
+            username: "aaaaa",
             password: "123456"
         }
         request(app)
@@ -109,12 +109,19 @@ describe('POST Auth', () => {
             .send(user)
             .expect(201)
             .expect((res) => {
+                jf.readFile('./models/user.json', (err, obj) => {
+                    if (err) throw err
+                    const fileObj = obj;
+                    fileObj.users.splice(fileObj.users.findIndex(el => el.username == "aaaaa"), 1)
+                    jf.writeFile('./models/user.json', fileObj, {spaces: 2}, (err) => {if (err) throw err})
+                })
                 expect(res.body.message).toStrictEqual("Account created sucessfully")
             })
             .end((err, res) => {
                 if (err) return done(err)
                 done()
             })
+            
     }),
     it('should return error if username already taken', (done) => {
         let user = {
@@ -152,3 +159,20 @@ describe('POST Auth', () => {
     })
 })
 
+describe('DELETE /book/:id', () => {
+    it('should delete a book', (done) => {
+        request(app)
+            .delete('/api/book/1')
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.book).toStrictEqual(file.books.find(el => el.id == 1))
+                jf.writeFile(filePath, file, {spaces: 2}, (err) => {
+                    if (err) throw err
+                })
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    })
+})
