@@ -69,6 +69,39 @@
       "id": 13,
       "username": "12321321",
       "password": "$2b$10$fgAG45/9zHosPC27ULDMKuvP/RFE4rsvEpCuW0zPS5M5Tj.K7YvbK"
+    },
+    {
+      "id": 14,
+      "username": "21",
+      "password": "$2b$10$xD7GEMSUjQRue00YOeISJ.4gUwC02F9zYvjVaYNhG.oUbztIKk7K."
+    },
+    {
+      "id": 15,
+      "username": "User12",
+      "password": "$2b$10$r3tBw8QnXxxrTWiYycSt2uKZBJOvn3DX3p34VMAqbyPORzw2JRYB."
+    },
+    {
+      "id": 17,
+      "username": "3",
+      "password": "$2b$10$vPeAIcJ0zpf8UySq.fCt.equF6mohqo.xDnQatltgc4O9v28ElHgS"
+    },
+    {
+      "id": 17,
+      "username": "3",
+      "email": "123@gmail.com",
+      "password": "$2b$10$mPVIMWj2T4KWwaSZz0YKbOHlvr81O8bYQmxnnwl16N6kSNH/h2bTq"
+    },
+    {
+      "id": 18,
+      "username": "3",
+      "email": "123@g12.com",
+      "password": "$2b$10$d2CVOvGJkx6im20B5PnYguCDmDK2IWmZZ122SRWgqh3CE0tyrjAea"
+    },
+    {
+      "id": 19,
+      "username": "kolya",
+      "email": "stariyperets@gmail.com",
+      "password": "$2b$10$HE16Zv4MNL9utnYEkIoDmu5NVENiSCwYGAS4czUe6qyiYWqSoZ4DC"
     }
   ],
   "roles": [

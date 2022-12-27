@@ -3,12 +3,27 @@ const request = require('supertest')
 const expect = require('expect').default
 const jf = require('jsonfile')
 const path = require('path')
+var cookies;
 
 let filePath = path.join(__dirname+'/data.json')
 const file = jf.readFileSync(filePath)
 
+describe('AUTH required', () => {
+    it('login', () => {
+        return request(app).post('/api/login')
+            .send({
+                "username": "3",
+                "password": "12345678Aa-"
+            })
+            .expect(200)
+            .then(res => {
+                cookies = res.headers['set-cookie'].pop().split(';')[0];
+            })
+    })
+})
+
 describe('GET /book', function() {
-    it('get', function(done) {
+    it('get all books', function(done) {
       request(app).get('/api/book')
         .set('Accept', 'application/json')
         .expect('Content-Type', /json/)
@@ -18,6 +33,16 @@ describe('GET /book', function() {
           done();
         });
     });
+    it('get book with id 1', function(done) {
+        request(app).get('/api/book/1')
+          .set('Accept', 'application/json')
+          .expect('Content-Type', /json/)
+          .expect(200)
+          .end(function(err, res) {
+            if (err) throw err;
+            done();
+          });
+      });
 });
 
 describe('POST /book', () => {
@@ -102,6 +127,7 @@ describe('POST Auth', () => {
     it('should create a new user', (done) => {
         let user = {
             username: "aaaaa",
+            email: "aaaaa@gmail.com",
             password: "123456"
         }
         request(app)
@@ -123,9 +149,10 @@ describe('POST Auth', () => {
             })
             
     }),
-    it('should return error if username already taken', (done) => {
+    it('should return error if email is already taken', (done) => {
         let user = {
-            username: "dima",
+            username: "kolya",
+            email: "stariyperets@gmail.com",
             password: "123456"
         }
         request(app)
@@ -133,7 +160,7 @@ describe('POST Auth', () => {
             .send(user)
             .expect(400)
             .expect((res) => {
-                expect(res.body.message).toStrictEqual("User with given username already exist")
+                expect(res.body.message).toStrictEqual("User with given email already exist")
             })
             .end((err, res) => {
                 if (err) return done(err)
@@ -176,3 +203,31 @@ describe('DELETE /book/:id', () => {
             })
     })
 })
+
+describe('refreshToken routes', () => {
+    it('should logout successfully WITH cookies', (done) => {
+        request(app).delete('/api/refreshToken/logout')
+            .set('cookie', cookies)
+            .expect(200)
+            .expect(res => {
+                expect(res.body.message).toStrictEqual('Logged Out Sucessfully')
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    })
+    it('should create new access token', (done) => {
+        request(app).post('/api/refreshToken')
+            .set('cookie', cookies)
+            .expect(200)
+            .expect((res) => {
+                expect(res.body.message).toStrictEqual('Access token created successfully')
+            })
+            .end((err, res) => {
+                if (err) return done(err)
+                done()
+            })
+    }) 
+})
+

@@ -6,10 +6,25 @@ app.use(bodyParser.json())
 const jsonfile = require('jsonfile')
 const path = './test/data.json'
 const file = jsonfile.readFileSync(path)
+const session = require('express-session')
 
 const auth = require('./routes/auth');
+const refreshTokenRoutes = require("./routes/refreshToken.js");
 
+app.use(session({
+  name : 'session',
+  secret : 'corgi',
+  resave : true,
+  saveUninitialized: false,
+  cookie : {
+          maxAge:(1000 * 60 * 100)
+  },
+  refreshToken : ''
+}));
+
+app.use(express.json());
 app.use('/api', auth);
+app.use('/api/refreshToken', refreshTokenRoutes)
 
 const findBookById = (id) => {
     const books = file.books

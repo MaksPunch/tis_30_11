@@ -19,9 +19,8 @@ const generateTokens = async (user) => {
             process.env.REFRESH_TOKEN_PRIVATE_KEY,
             { expiresIn: "30d" }
         );
-
-        const foundUserToken = await UserToken.userToken.find(el => el.id == user.id);
-        if (foundUserToken) await UserToken.userToken.splice(foundUserToken, 1)
+        const foundUserToken = await UserToken.userToken.find(el => el.userId == user.id);
+        if (foundUserToken) await UserToken.userToken.splice(UserToken.userToken.findIndex(el => el.id == user.id), 1)
         
         await UserToken.userToken.push({ userId: user.id, token: refreshToken });
         jf.writeFile(file, UserToken, {spaces: 2}, (err) => {if (err) throw err})
