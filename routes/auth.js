@@ -1,8 +1,9 @@
 const { Router } = require("express");
 const bcrypt = require("bcrypt");
-const path = require('path')
+const path = require('path');
 const generateTokens = require("../utils/generateTokens.js");
 require("dotenv").config();
+const auth = require('../middleware/auth.js')
 
 const router = Router();
 const file = path.join('./models/user.json')
@@ -24,20 +25,26 @@ router.post("/signUp", async (req, res) => {
         if (!req.body.email) return res.status(400).json({ error: true, message: "email is required" })
         if (!req.body.password) return res.status(400).json({ error: true, message: "password is required" })
         if (!emailValidate(req.body.email)) return res.status(400).json({ error: true, message: "email is not valid" })
-        const user = await User.users.find(el => el.email == req.body.email);
-        if (user)
+        const userEmail = await User.users.find(el => el.email == req.body.email);
+        if (userEmail)
             return res
                 .status(400)
                 .json({ error: true, message: "User with given email already exist" });
+        const username = await User.users.find(el => el.username == req.body.username);
+        if (username)
+            return res
+                .status(400)
+                .json({ error: true, message: "User with given username already exist" });
 
         const salt = await bcrypt.genSalt(Number(process.env.SALT));
         const hashPassword = await bcrypt.hash(req.body.password, salt);
 
         const newUser = {
-            id: User.users.length,
+            id: User.users[User.users.length - 1].id + 1,
             username: req.body.username,
             email: req.body.email,
-            password: hashPassword
+            password: hashPassword,
+            roles: 'user'
         }
         User.users.push(newUser)
         jf.writeFile(file, User, {spaces: 2}, (err) => {if (err) throw err})
@@ -67,7 +74,7 @@ router.post("/logIn", async (req, res) => {
         if (!verifiedPassword)
             return res
                 .status(401)
-                .json({ error: true, message: "Invalid email or password" });
+                .json({ error: true, message: "Invalid Password" });
 
         const { accessToken, refreshToken } = await generateTokens(user); 
         req.session['refreshToken'] = refreshToken;
@@ -83,23 +90,17 @@ router.post("/logIn", async (req, res) => {
     }
 });
 
-router.get('/profile', (req, res) => {
+router.get('/profile', auth, (req, res) => {
     try {
-        jf.readFile('./models/user.json', (err, obj) => {
-            if (err) throw err
-            const fileObj = obj;
-            let uid = jf.readFileSync('./models/UserToken.json').userToken
-                .find(el => el.token == req.session.refreshToken);
-            if (uid) uid = uid.userId;
-            else return res.status(400).json({error: true, message: "Token Not Found"});
-            const user = fileObj.users.find(el => el.id == uid)
-            
             return res.status(200).json({
-                uid: uid,
-                username: user.username,
-                email: user.email
+                success: 'true',
+                user: {
+                    username: req.user.name,
+                    email: req.user.email,
+                    uid: req.user.id,
+                    roles: req.user.roles
+                } 
             })
-        })
     } catch (err) {
         console.log(err);
         res.status(500).json({ error: true, message: "Internal Server Error" });

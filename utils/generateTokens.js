@@ -8,7 +8,7 @@ const UserToken = jf.readFileSync(file);
 
 const generateTokens = async (user) => {
     try {
-        const payload = { id: user.id, roles: user.roles };
+        const payload = { id: user.id, roles: user.roles, name: user.username, email: user.email };
         const accessToken = jwt.sign(
             payload,
             process.env.ACCESS_TOKEN_PRIVATE_KEY,
@@ -20,7 +20,7 @@ const generateTokens = async (user) => {
             { expiresIn: "30d" }
         );
         const foundUserToken = await UserToken.userToken.find(el => el.userId == user.id);
-        if (foundUserToken) await UserToken.userToken.splice(UserToken.userToken.findIndex(el => el.id == user.id), 1)
+        if (foundUserToken) await UserToken.userToken.splice(UserToken.userToken.findIndex(el => el.userId == user.id), 1)
         
         await UserToken.userToken.push({ userId: user.id, token: refreshToken });
         jf.writeFile(file, UserToken, {spaces: 2}, (err) => {if (err) throw err})

@@ -1,107 +1,25 @@
 {
   "users": [
     {
-      "id": 0,
-      "username": "kek",
-      "password": "$2b$10$PRPNt0QYv6UibCDvA7UWFO2sRwQnFvxVDSnZPdcxtBPWbdSBx/ViO"
+      "id": 22,
+      "username": "makspunch",
+      "email": "maks.punch@yandex.ru",
+      "password": "$2b$10$9B/DBgvAg5IcAcka/g1ZWOeSA3ME.jzpCqApictjK4HW48dgVrvYG",
+      "roles": "user"
     },
     {
-      "id": 1,
-      "username": "dima",
-      "password": "$2b$10$vFKamMFrTlUgJjdLhME1MeheQk2LDVFSGkFmfMpE6H3gD37jqu4xO"
+      "id": 23,
+      "username": "gappi",
+      "email": "tarasovmaks19@gmail.com",
+      "password": "$2b$10$PPbJ3JzynpGt2CvN..C1PeT0YMYVo7FJJ1hJeSCQ3ZXwLqoABMG6u",
+      "roles": "admin"
     },
     {
-      "id": 2,
-      "username": "12345678902141f5 1345tr rsfdbas dsF A EAS",
-      "password": "$2b$10$TU5H3QUNuy3yKGYqYmocaec8qVB51Qu2hHatbkVgDSv1AFCspmucS"
-    },
-    {
-      "id": 3,
-      "username": "MaksPunch",
-      "password": "$2b$10$HqLMOAFEfw8MHGSlyNg.uuM.URGNDI0HV9xE1aNBhjcZl0qCQTrdq"
-    },
-    {
-      "id": 4,
-      "username": "dima1",
-      "password": "$2b$10$IDxOed85vAcus.F8NWUe3.z7Nzj.sF9pjgTl6sYckUkiEzogrfsZG"
-    },
-    {
-      "id": 5,
-      "username": "dima213",
-      "password": "$2b$10$LrvlNShyBQn64Ta4WKfM..yKEaOIDmdWP5fNkCz/YhFUpmuMOz6Fe"
-    },
-    {
-      "id": 6,
-      "username": "dima231213",
-      "password": "$2b$10$1ilzh3kvXpKyclP1IW7p0.0PNIL1iqdmt4jsp0rkcXoMiGdwPW4ru"
-    },
-    {
-      "id": 7,
-      "username": "123",
-      "password": "$2b$10$4vzdiKTgFXTIsDjtXc4nNOdHmWsCw7NHHWDY34FTaeoE9OdyC.hRC"
-    },
-    {
-      "id": 8,
-      "username": "12312345",
-      "password": "$2b$10$1oSyNohyprOQqt2O4QGFwup4qUdDneiesMrtFj50jPyVceEqkZ/Gq"
-    },
-    {
-      "id": 9,
-      "username": "12312132345",
-      "password": "$2b$10$bv4Yoi3Kj1XCSzM/QQ8NW.k7G7QZYwhQ7LhuLVbzZjaamV0SPQL6G"
-    },
-    {
-      "id": 10,
-      "username": "aa",
-      "password": "$2b$10$qq4HZHmxGThm7BcZfXqGe.RPtwGDlS6f4uYqcp.tnTczBVbb6KvaC"
-    },
-    {
-      "id": 11,
-      "username": "aaa",
-      "password": "$2b$10$v8iHVj8KrwF6FjX6sJ4KYuwSCj2UwdQAB5Ctwkg1ePRj6kxpGKd/u"
-    },
-    {
-      "id": 12,
-      "username": "aaaa",
-      "password": "$2b$10$I74D27LkEnLlw7bP2YZPIuqozcdOKeTsXyEwi4b3gOCQ8L1U9q1Dm"
-    },
-    {
-      "id": 13,
-      "username": "12321321",
-      "password": "$2b$10$fgAG45/9zHosPC27ULDMKuvP/RFE4rsvEpCuW0zPS5M5Tj.K7YvbK"
-    },
-    {
-      "id": 14,
-      "username": "21",
-      "password": "$2b$10$xD7GEMSUjQRue00YOeISJ.4gUwC02F9zYvjVaYNhG.oUbztIKk7K."
-    },
-    {
-      "id": 15,
-      "username": "User12",
-      "password": "$2b$10$r3tBw8QnXxxrTWiYycSt2uKZBJOvn3DX3p34VMAqbyPORzw2JRYB."
-    },
-    {
-      "id": 17,
-      "username": "3",
-      "password": "$2b$10$vPeAIcJ0zpf8UySq.fCt.equF6mohqo.xDnQatltgc4O9v28ElHgS"
-    },
-    {
-      "id": 17,
-      "username": "3",
-      "email": "123@gmail.com",
-      "password": "$2b$10$mPVIMWj2T4KWwaSZz0YKbOHlvr81O8bYQmxnnwl16N6kSNH/h2bTq"
-    },
-    {
-      "id": 18,
-      "username": "3",
-      "email": "123@g12.com",
-      "password": "$2b$10$d2CVOvGJkx6im20B5PnYguCDmDK2IWmZZ122SRWgqh3CE0tyrjAea"
-    },
-    {
-      "id": 19,
+      "id": 25,
       "username": "kolya",
       "email": "stariyperets@gmail.com",
-      "password": "$2b$10$HE16Zv4MNL9utnYEkIoDmu5NVENiSCwYGAS4czUe6qyiYWqSoZ4DC"
+      "password": "$2b$10$4sFfiBAR/OmmkwkK8TgNl.kzIFfDHgzF8ynWdz32apVnrXqXSwnSm",
+      "roles": "user"
     }
   ],
   "roles": [

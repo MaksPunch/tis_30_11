@@ -3,11 +3,12 @@ const jwt = require("jsonwebtoken");
 const jf = require('jsonfile')
 const UserToken = jf.readFileSync('./models/UserToken.json').userToken
 const verifyRefreshToken = require("../utils/verifyRefreshToken.js");
+const auth = require('../middleware/auth.js')
 
 const router = Router();
 
 // get new access token
-router.post("/", async (req, res) => {
+router.post("/", auth, async (req, res) => {
     verifyRefreshToken(req.session['refreshToken'])
         .then(({ tokenDetails }) => {
             const payload = { _id: tokenDetails._id, roles: tokenDetails.roles };
@@ -26,7 +27,7 @@ router.post("/", async (req, res) => {
 });
 
 // logout
-router.delete("/logout", async (req, res) => {
+router.delete("/logout", auth, async (req, res) => {
     try {
         jf.readFile('./models/UserToken.json', (err, obj) => {
             if (err) throw err;
@@ -37,7 +38,8 @@ router.delete("/logout", async (req, res) => {
                 .status(200)
                 .json({ error: false, message: "Not Logged In" });
             fileObj.userToken.splice(obj.userToken.findIndex(el => el.token == req.session.refreshToken), 1);
-            jf.writeFile('./models/UserToken.json', fileObj, {spaces: 2}, (err, obj) => { if (err) throw err })
+            jf.writeFile('./models/UserToken.json', fileObj, {spaces: 2}, (err) => { if (err) throw err })
+            req.session['refreshToken'] = '';
             res.status(200).json({ error: false, message: "Logged Out Sucessfully" });
         });
     } catch (err) {
