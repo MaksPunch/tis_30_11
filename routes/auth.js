@@ -21,10 +21,10 @@ function emailValidate(email) {
 // signup
 router.post("/signUp", async (req, res) => {
     try {
-        if (!req.body.username) return res.status(400).json({ error: true, message: "username is required" })
-        if (!req.body.email) return res.status(400).json({ error: true, message: "email is required" })
-        if (!req.body.password) return res.status(400).json({ error: true, message: "password is required" })
-        if (!emailValidate(req.body.email)) return res.status(400).json({ error: true, message: "email is not valid" })
+        if (!req.body.username) return res.status(401).json({ error: true, message: "username is required" })
+        if (!req.body.email) return res.status(401).json({ error: true, message: "email is required" })
+        if (!req.body.password) return res.status(401).json({ error: true, message: "password is required" })
+        if (!emailValidate(req.body.email)) return res.status(401).json({ error: true, message: "email is not valid" })
         const userEmail = await User.users.find(el => el.email == req.body.email);
         if (userEmail)
             return res
