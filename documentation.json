@@ -64,13 +64,24 @@
         }
       }
     },
-    "/api/book/id": {
+    "/api/book/{id}": {
       "get": {
         "tags": [
           "Book"
         ],
         "description": "returns one book by id",
         "operationId": "getBook",
+        "parameters": [
+            {
+            "in": "path",
+            "name": "id",
+            "schema":{
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Numeric ID of the book "
+            }
+        ],
         "responses": {
           "200": {
             "description": "All the books",
@@ -98,6 +109,17 @@
           "Book"
         ],
         "operationId": "updateBook",
+        "parameters": [
+            {
+            "in": "path",
+            "name": "id",
+            "schema":{
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Numeric ID of the book"
+            }
+        ],
         "requestBody": {
           "content": {
             "application/json": {
@@ -127,6 +149,17 @@
           "Book"
         ],
         "operationId": "deleteBook",
+        "parameters": [
+            {
+            "in": "path",
+            "name": "id",
+            "schema":{
+              "type": "integer"
+            },
+            "required": true,
+            "description": "Numeric ID of the book"
+            }
+        ],
         "responses": {
           "200": {
             "description": "book deleted successfully"
