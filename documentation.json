@@ -7,7 +7,7 @@
   },
   "servers": [
     {
-      "url": "https://virtserver.swaggerhub.com/MaksPunch/book/1.0.0",
+      "url": "http://localhost:3000",
       "description": "Library service by MaksPunch"
     }
   ],

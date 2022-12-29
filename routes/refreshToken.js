@@ -39,7 +39,8 @@ router.delete("/logout", auth, async (req, res) => {
                 .json({ error: false, message: "Not Logged In" });
             fileObj.userToken.splice(obj.userToken.findIndex(el => el.token == req.session.refreshToken), 1);
             jf.writeFile('./models/UserToken.json', fileObj, {spaces: 2}, (err) => { if (err) throw err })
-            req.session['refreshToken'] = '';
+            req.session.destroy();
+            res.clearCookie('123')
             res.status(200).json({ error: false, message: "Logged Out Sucessfully" });
         });
     } catch (err) {

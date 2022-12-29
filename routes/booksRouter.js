@@ -1,6 +1,7 @@
 const { Router } = require("express");
 require("dotenv").config();
 const auth = require('../middleware/auth.js');
+const authAdmin = require('../middleware/authAdmin.js')
 const jf = require('jsonfile')
 const path = './test/data.json'
 const file = jf.readFileSync(path)
@@ -106,8 +107,8 @@ router.put('/:id', auth, (req, res) => {
   	});
 })
 
-router.delete('/:id', auth, (req, res) => {
-    if (req.user.roles != "admin") return res.status(403).send('Not Admin')
+router.delete('/:id', auth, authAdmin, (req, res) => {
+    
 	const id = parseInt(req.params.id, 10);
 	jf.readFile(path, (err, obj) => {
         if (err) throw err;
