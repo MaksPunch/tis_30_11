@@ -19,32 +19,6 @@
         ],
         "description": "returns all registered books",
         "operationId": "getBooks",
-        "parameters": [
-          {
-            "name": "skip",
-            "in": "query",
-            "description": "number of records to skip",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          },
-          {
-            "name": "limit",
-            "in": "query",
-            "description": "max number of records to return",
-            "required": false,
-            "style": "form",
-            "explode": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "responses": {
           "200": {
             "description": "All the books",
